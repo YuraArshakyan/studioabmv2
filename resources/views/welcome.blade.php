@@ -9,8 +9,11 @@
                 <img src="front_image/3.jpg" class="front_carusel activated" alt="">
                 <img src="front_image/4.jpg" class="front_carusel activated" alt="">
             </div>
-            <div class="text">
-
+            <div class="front_text text container text-uppercase">
+                <div class="front_big_text">
+                    <h3 class="f-size-18">welcome to The Studio ABM Builders</h3>
+                    <h1 class="f-size-80 lh38">Trust is us</h1>
+                </div>
             </div>
             <div class="d-flex justify-content-center">
                 <div class="container small_img&control_button d-flex justify-content-space position-absolute bottom-0">
