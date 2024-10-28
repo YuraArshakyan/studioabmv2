@@ -20,6 +20,9 @@
             <button type="button" class=" bg-color_gold btn btn-primary">Contact Us</button>
         </div>
         <div class="p-15">
+            <button type="button" class=" bg-color_gold btn btn-primary">Our projects</button>
+        </div>
+        <div class="p-15">
             <span class="bg-color_gold carusel_control_button carusel_control_left mr-10"><i class="fa-brands fa-facebook d-flex justify-content-center align-items-center"></i></span>
         </div>
         <div class="p-15">

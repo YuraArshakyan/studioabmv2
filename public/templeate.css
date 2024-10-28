@@ -31,6 +31,9 @@ body{
 .color-w{
     color:white;
 }
+.bg-w{
+    background-color:white;
+}
 .tansition-25ms-ease{
     transition: all .25s ease;
 }
@@ -69,4 +72,36 @@ body{
 }
 .h-50{
     height: 50%;
+}
+.br1opacity021{
+    border-right: 1px #00000021 solid;
+}
+.br-5pxB-1px{
+    border: 1px solid #0000003b;
+    border-radius: 5px;
+}
+.br-10px{
+    border-radius: 10px;
+}
+
+label{
+    color: gray;
+}
+
+.btn-outline-gold {
+    --bs-btn-color: white !important;
+    --bs-btn-border-color: white !important;
+    --bs-btn-hover-color: black !important;
+    --bs-btn-hover-bg: white !important;
+    --bs-btn-hover-border-color: white !important;
+    --bs-btn-focus-shadow-rgb: 13, 110, 253 !important;
+    
+    --bs-btn-disabled-color: #0d6efd !important;
+    --bs-btn-disabled-bg: transparent !important;
+    --bs-btn-disabled-border-color: #0d6efd !important;
+    --bs-gradient: none !important;
+}
+
+.h-40px{
+    height: 40px;
 }
