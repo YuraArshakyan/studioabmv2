@@ -5,6 +5,49 @@
 body{
     background: black;
 }
+
+body::-webkit-scrollbar { 
+	display: none; /* Safari and Chrome */
+}
+.menue  a:not([href]):not([class]), a:not([href]):not([class]):hover {
+    color: white;
+    cursor: pointer;
+}
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Dancing+Script:wght@400..700&family=Dosis:wght@200..800&display=swap');
+
+.text{
+    font-family: "Dosis", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 200;
+    font-style: normal;
+}
+.width300{
+    font-weight: 300 !important;
+}
+
+.width400{
+    font-weight: 400 !important;
+}
+
+.width500{
+    font-weight: 500 !important;
+}
+
+.width600{
+    font-weight: 600 !important;
+}
+
+.width700{
+    font-weight: 700 !important;
+}
+
+.width800{
+    font-weight: 800 !important;
+}
+.f-size-23{
+    font-size: 23px;
+}
+
 .justify-content-space{
     justify-content: space-between;
 }
@@ -30,6 +73,9 @@ body{
 }
 .color-w{
     color:white;
+}
+.color-b{
+    color:black;
 }
 .bg-w{
     background-color:white;
@@ -91,17 +137,31 @@ label{
 .btn-outline-gold {
     --bs-btn-color: white !important;
     --bs-btn-border-color: white !important;
-    --bs-btn-hover-color: black !important;
+    --bs-btn-hover-color: #e2c28b !important;
     --bs-btn-hover-bg: white !important;
     --bs-btn-hover-border-color: white !important;
     --bs-btn-focus-shadow-rgb: 13, 110, 253 !important;
     
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #0d6efd00;
+    --bs-btn-active-border-color: #ffffff;
+
     --bs-btn-disabled-color: #0d6efd !important;
     --bs-btn-disabled-bg: transparent !important;
     --bs-btn-disabled-border-color: #0d6efd !important;
     --bs-gradient: none !important;
 }
-
+.btn-outline-primary {
+    --bs-btn-color: #e2c28b;
+    --bs-btn-border-color: #e2c28b;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #e2c28b;
+    --bs-btn-hover-border-color: #e2c28b;
+    --bs-btn-focus-shadow-rgb: 13, 110, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #0d6efd00;
+    --bs-btn-active-border-color: #e2c28b;
+}
 .h-40px{
     height: 40px;
 }

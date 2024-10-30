@@ -4,7 +4,7 @@
             <div class="sections">
                 <div class="section1 d-flex p-15 justify-content-between ">
                     <div class="stage1">
-                        <h3>Join our community today!</h3>
+                        <h3 class="color-w" >Join our community today!</h3>
                         <div class="input-group mb-3">
                             <input type="email" class="form-control emailUpdates" placeholder="Your email" aria-label="Recipient's username" aria-describedby="button-addon2">
                             <button class="btn btn-outline-secondary formUpdates" type="button" id="button-addon2">Submit</button>

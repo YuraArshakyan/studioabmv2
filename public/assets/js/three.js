@@ -51,7 +51,7 @@ function projects() {
         const video = document.createElement('video');
         const texture = new THREE.VideoTexture(video);
         
-        video.src = 'projects/' + i + '.mp4'; 
+        video.src = 'projects_content/' + i + '.mp4'; 
         video.load();
         video.loop = true;
         video.muted = true; 
