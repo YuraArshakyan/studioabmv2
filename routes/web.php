@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\SubmitedFormsController;
+use App\Http\Controllers\SubmitedFormsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,5 +17,5 @@ Route::get('/services', function () {
 });
 
 Route::controller(SubmitedFormsController::class)->group(function(){
-    Route::post('/submitFormRequest', [SubmitedFormsController::class, 'store']);
+    Route::post('submitFormRequest', [SubmitedFormsController::class, 'store']);
 });

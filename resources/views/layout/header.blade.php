@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="templeate.css">
     <link rel="stylesheet" href="responsive.css">
     <link rel="stylesheet" href="style.css">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title> - @yield('title')</title>
     
 </head>
