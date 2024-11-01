@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Dancing+Script:wght@400..700&family=Dosis:wght@200..800&display=swap');
+
 *{
     padding: 0;
     margin: 0;
@@ -13,7 +15,6 @@ body::-webkit-scrollbar {
     color: white;
     cursor: pointer;
 }
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Dancing+Script:wght@400..700&family=Dosis:wght@200..800&display=swap');
 
 .text{
     font-family: "Dosis", sans-serif;
@@ -76,6 +77,9 @@ body::-webkit-scrollbar {
 }
 .color-b{
     color:black;
+}
+.color-gray{
+    color:#727272;
 }
 .bg-w{
     background-color:white;
@@ -164,4 +168,10 @@ label{
 }
 .h-40px{
     height: 40px;
+}
+.min_height_80vh{
+    min-height: 80vh;
+}
+.pl-3{
+    padding-left: 1rem !important;
 }

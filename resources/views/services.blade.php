@@ -2,10 +2,10 @@
 @section('title', 'Services')
 @section('content')
     <div class="services_head">
-        <img src="services_img/2.jpg" class="w-100 h-100">
+        {{-- <img src="/services_img/2.jpg" class="w-100 h-100"> --}}
 
         <h1>
-            Bathroom Remodeling
+            {{$services->header}}
         </h1>
     </div>
 
@@ -13,17 +13,12 @@
     <div class="container">
         <div class="services_main_content p-20">
             <div class="row">
-                <div class="col-6">
-                    <img src="services_img/2.jpg" class="w-100 h-100">
+                <div class="col-md-6 col-lg-6 col-sm-12">
+                    <img src="/services_img/2.jpg" class="object-fit-contain w-100 h-100">
                 </div>
-                <div class="col-6 d-flex align-items-center">
+                <div class="col-md-6 col-lg-6 col-sm-12 d-flex align-items-center">
                     <p class="color-w">
-                        Bathroom remodeling has become one of the most popular ways to 
-                        revitalize your tired bathroom, maximize the amount of useful 
-                        space or even simply freshen up the decor as needed. With 
-                        years of experience in the home remodeling industry and 
-                        several bathroom remodeling projects completed, Premiere Home 
-                        Builders, Inc. can help you achieve the bathroom of your dreams.
+                        {!! nl2br($services->main_text) !!}
                     </p>
                 </div>
                 <div class="p-15 d-flex justify-content-end">

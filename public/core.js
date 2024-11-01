@@ -12,23 +12,12 @@ carousel_item[0].classList.add('carousel_activated');
 let current_index = 0;
 
 $( document ).ready(function(){    
-    const preloader_hide = document.querySelector('.preloader');
+    const mobile_menue = document.querySelector('.container_menue_mobile');
 
-    setTimeout(
-        hide_preloader(), 1000
-    );
-    function hide_preloader() {
-        preloader_hide.classList.add('hide');
-        setTimeout(
-            display_false_preloader(), 0
-        );
-    }
-
-    function display_false_preloader() {
-        preloader_hide.classList.add('d-none');
-    }
-
-
+    $( ".menue_open_bg" ).on( "click", function() {     
+        mobile_menue.classList.toggle('open');   
+    });
+    
     $( ".carusel_control_left" ).on( "click", function() {        
         if(current_index  == 0){
             carousel_item[current_index].classList.remove('carousel_activated');    
@@ -113,10 +102,13 @@ $( document ).ready(function(){
 
 
 $(document).ready(function(){
+
     $(".contacts_button").on("click", function(){
         let name = document.querySelector('.Name');
         let phone = document.querySelector('.Phone');
         let message = document.querySelector('.Message');
+        const success_message = document.querySelector('.form_submited_correct_contact');
+        const error_message = document.querySelector('.form_failed_contact');
         $.ajax({
             type: "POST",
             headers: {'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')},
@@ -129,24 +121,19 @@ $(document).ready(function(){
             },
             success: function(response){
                 console.log(response.status);
-                // if(response.status == "success"){
-                //     if(success.classList.contains('d-none')){
-                //         success.classList.remove('d-none');
-
-                //         setInterval(hide, 5000);
-                //         function hide(){
-                //             success.classList.add('d-none');
-                //         }
-                //     }
-                // }else{
-                //     if(error.classList.contains('d-none')){
-                //         error.classList.remove('d-none');
-                //         setInterval(hide, 5000);
-                //         function hide(){
-                //             error.classList.add('d-none');
-                //         }
-                //     }
-                // }
+                if(response.status == "success"){
+                    if(error_message.classList.contains('active')){
+                        error_message.classList.remove('active')
+                    }
+                    success_message.classList.add('active');
+                    setTimeout(() => success_message.classList.remove('active'), 3000);
+                }else{
+                    if(success_message.classList.contains('active')){
+                        success_message.classList.remove('active')
+                    }
+                    error_message.classList.add('active');
+                    setTimeout(() => error_message.classList.remove('active'), 3000);
+                }
             }
         });
     });

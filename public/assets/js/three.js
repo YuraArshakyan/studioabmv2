@@ -48,18 +48,13 @@ function projects() {
     const radius = 3; 
     let current_index = 4;
     for (let i = 0; i < 5; i++) {
-        const video = document.createElement('video');
-        const texture = new THREE.VideoTexture(video);
-        
-        video.src = 'projects_content/' + i + '.mp4'; 
-        video.load();
-        video.loop = true;
-        video.muted = true; 
-        video.play();
+        let file_name = "projects_content/" + i + ".jpg";
+
+        const texture = new THREE.TextureLoader().load( file_name );
 
         const geometry = new THREE.PlaneGeometry(1.5, 1);
         {
-            const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.OneS });
+            const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
             const plane = new THREE.Mesh(geometry, material);
 
             const angle = (i / 4) * (Math.PI * 2); // Full circle in radians
@@ -78,16 +73,13 @@ function projects() {
 
     let speed = 0.001;
     canvas.addEventListener('mouseover', () => {
-        console.log('stop');
         speed = 0.005;       
     })
     canvas.addEventListener('mouseout', () => {
-        console.log('stop');
         speed = 0.001;       
     })
     if(window.innerWidth > 1024){
         canvas.addEventListener('click', () => {
-            console.log('stop');
             if(speed == 0.001 || speed == 0.005){
                 speed = 0;       
             }else{
@@ -96,7 +88,6 @@ function projects() {
         })
     }else{
         canvas.addEventListener('click', () => {
-            console.log('stop');
             if(speed == 0.001){
                 speed = 0.005;
             }else if(speed == 0.005){

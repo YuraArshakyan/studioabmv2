@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('Phone')->nullable();
             $table->text('email')->nullable();
             $table->text('Message')->nullable();
+            $table->enum('form', ['Contacts', 'Updates']);
             $table->enum('status', ['success', 'Fault']);
             $table->enum('sent_to_reserve_email', ['yes', 'no']);
             $table->timestamps();

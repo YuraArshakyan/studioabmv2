@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\submited_forms;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\formSubmited;
 class SubmitedFormsController extends Controller
 {
     /**
@@ -28,11 +31,24 @@ class SubmitedFormsController extends Controller
      */
     public function store(Request $request)
     {
+
         if($request->form_name == "Contacts"){
-            return response()->json(['status'=>'Contacts']);
-        }
-        if($request->form_name == "Updates"){
-            return response()->json(['status'=>'NotContacts']);
+            if( $request->name == null  || $request->phone == null || $request->message == null){
+                return response()->json(['status'=>'error']);
+            }
+            $create_data = submited_forms::create([
+                'Name' => $request->name,
+                'Phone' => $request->phone,
+                'Message' => $request->message,
+                'form' => 'Contacts',
+                'status' => 'success',
+                'sent_to_reserve_email' => 'no',
+            ]);
+            $create_data->save();
+            Mail::to('yuraarshakyan988@gmail.com')->send(new formSubmited($request->name, $request->phone, $request->message));
+            
+            
+            return response()->json(['status'=>'success']);
         }
     }
 

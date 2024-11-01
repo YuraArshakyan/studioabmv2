@@ -1,3 +1,20 @@
+@php
+    use App\Models\config;
+
+    $title = config::where('key', 'title')->get();
+
+    $FrontEmail = config::where('key','FrontEmail')->get();
+
+    $FrontPhone = config::where('key','FrontPhone')->get();
+
+    $FacebookLink = config::where('key','FacebookLink')->get();
+
+    $InstagramLink = config::where('key','InstagramLink')->get();
+
+    $workingHoursFront = config::where('key','workingHoursFront')->get();
+
+    $Address = config::where('key','Address')->get();
+@endphp
 @extends('layout.index')
 @section('title', 'Home')
 @section('content')
@@ -143,272 +160,25 @@
         <h1 class="text width500 color-w text-center bg-color_gold p-0 m-0">Our Services</h1>
         <div class="section_sixth_content_container bg-color_gold">
             <div class="container">
+
                 <div class="row p-20">
-                    <div class="services_item_container col-sm-12 col-md-4 col-lg-4">
-                        <div class="card w-100">
-                            <div class="card-header f-size-23 text width400 text-center color-w">
-                                Kitchen Remodeling
-                            </div>
-                            <div class="card-body text text-center d-flex justify-content-center align-items-center text">
-                                Kitchen remodeling transforms your 
-                                cooking space into a functional and stylish hub. 
-                                It often involves updating appliances, cabinets, 
-                                countertops, and lighting to improve efficiency and 
-                                aesthetics. Popular trends include open floor plans, 
-                                modern fixtures, and sustainable materials. A well-planned 
-                                remodel can enhance your home's value and create an inviting 
-                                environment for family and friends. Whether you want a complete 
-                                overhaul or just a few updates, a thoughtful approach can make
-                                your kitchen both beautiful and practical.
-                            </div>
-                            <div class="card-footer d-flex justify-content-center align-items-center">
-                                <a href={{url('/services')}} ><button class="btn btn-outline-gold text-capitalize">learn more</button></a>
+                    @foreach($services as $services)
+                        <div class="services_item_container col-sm-12 col-md-4 col-lg-4 mb-5">
+                            <div class="card w-100">
+                                <div class="card-header f-size-23 text width600 text-center color-gray">
+                                    {{$services->header}}
+                                </div>
+                                <div class="card-body text text-center d-flex justify-content-center align-items-center text">
+                                    {{$services->front_text}}
+                                </div>
+                                <div class="card-footer d-flex justify-content-center align-items-center">
+                                    <a href={{url('/services'. '/' . $services->id)}} ><button class="btn btn-outline-gold text-capitalize">learn more</button></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="services_item_container col-sm-12 col-md-4 col-lg-4">
-                        <div class="card w-100">
-                            <div class="card-header f-size-23 text width400 text-center color-w">
-                                3D design
-                            </div>
-                            <div class="card-body text text-center d-flex justify-content-center align-items-center text">
-                                Transform your kitchen vision into reality with advanced 
-                                3D design services. Visualize your space with detailed models 
-                                that showcase layouts, materials, and finishes. Collaborate 
-                                with expert designers to ensure every element reflects your 
-                                style and needs. Experience a smoother remodeling process and 
-                                see your dream kitchen before construction begins. Let’s create 
-                                the kitchen you’ve always wanted!
-                            </div>
-                            <div class="card-footer d-flex justify-content-center align-items-center">
-                                <a href={{url('/services')}} ><button class="btn btn-outline-gold text-capitalize">learn more</button></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="services_item_container col-sm-12 col-md-4 col-lg-4">
-                        <div class="card w-100">
-                            <div class="card-header f-size-23 text width400 text-center color-w">
-                                Bathroom Remodeling
-                            </div>
-                            <div class="card-body text text-center d-flex justify-content-center align-items-center text">
-                                Transform your bathroom into a stylish and functional oasis. 
-                                Our remodeling services focus on creating a space that suits your 
-                                needs, whether you want a luxurious retreat or a modern design. 
-                                From updating fixtures to smart storage solutions, our expert 
-                                team ensures every detail is perfect. Enjoy a seamless 
-                                renovation process and a bathroom that enhances your daily 
-                                routine. Let’s make your dream bathroom a reality!
-                            </div>
-                            <div class="card-footer d-flex justify-content-center align-items-center">
-                                <a href={{url('/services')}} ><button class="btn btn-outline-gold text-capitalize">learn more</button></a>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
-                <div class="row p-20">
-                    <div class="services_item_container col-sm-12 col-md-4 col-lg-4">
-                        <div class="card w-100">
-                            <div class="card-header f-size-23 text width400 text-center color-w">
-                                Electrical
-                            </div>
-                            <div class="card-body text text-center d-flex justify-content-center align-items-center text">
-                                Ensure safety and efficiency with our professional electrical 
-                                services. From wiring upgrades and lighting installations 
-                                to electrical inspections and repairs, we handle all your 
-                                electrical needs. Our licensed electricians prioritize 
-                                quality and safety, providing solutions that enhance your 
-                                home’s functionality and energy efficiency. Whether it’s a 
-                                small repair or a major installation, you can trust us to deliver 
-                                reliable and expert service. Illuminate your space and power your 
-                                home with confidence!
-                            </div>
-                            <div class="card-footer d-flex justify-content-center align-items-center">
-                                <a href={{url('/services')}} ><button class="btn btn-outline-gold text-capitalize">learn more</button></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="services_item_container col-sm-12 col-md-4 col-lg-4">
-                        <div class="card w-100">
-                            <div class="card-header f-size-23 text width400 text-center color-w">
-                                Plumbing
-                            </div>
-                            <div class="card-body text text-center d-flex justify-content-center align-items-center text">
-                                Keep your home running smoothly with our
-                                expert plumbing services. From installations and 
-                                repairs to routine maintenance, we handle all your 
-                                plumbing needs. Whether it’s fixing leaks, installing 
-                                fixtures, or unclogging drains, our skilled plumbers 
-                                ensure reliable solutions that prioritize efficiency 
-                                and durability. With a focus on quality and customer 
-                                satisfaction, we’re here to help you maintain a 
-                                functional and comfortable home. Trust us for all 
-                                your plumbing needs!
-                            </div>
-                            <div class="card-footer d-flex justify-content-center align-items-center">
-                                <a href={{url('/services')}} ><button class="btn btn-outline-gold text-capitalize">learn more</button></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="services_item_container col-sm-12 col-md-4 col-lg-4">
-                        <div class="card w-100">
-                            <div class="card-header f-size-23 text width400 text-center color-w">
-                                Flooring
-                            </div>
-                            <div class="card-body text text-center d-flex justify-content-center align-items-center text">
-                                Transform your space with our professional 
-                                flooring services. We offer a wide range of options, 
-                                including hardwood, laminate, tile, and carpet, to suit 
-                                any style and budget. Our skilled team handles 
-                                installations with precision, ensuring durability and 
-                                a perfect finish. Whether you're updating a single room 
-                                or your entire home, we provide expert guidance to help 
-                                you choose the right flooring that enhances your aesthetic 
-                                and meets your needs. Elevate your home’s look and feel 
-                                with our quality flooring solutions!
-                            </div>
-                            <div class="card-footer d-flex justify-content-center align-items-center">
-                                <a href={{url('/services')}} ><button class="btn btn-outline-gold text-capitalize">learn more</button></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row p-20">
-                    <div class="services_item_container col-sm-12 col-md-4 col-lg-4">
-                        <div class="card w-100">
-                            <div class="card-header f-size-23 text width400 text-center color-w">
-                                Drywall
-                            </div>
-                            <div class="card-body text text-center d-flex justify-content-center align-items-center text">
-                                Enhance your interiors with our professional 
-                                drywall services. We specialize in installation, 
-                                repair, and finishing, ensuring a smooth and seamless 
-                                look for your walls and ceilings. Whether you’re 
-                                remodeling or need repairs from wear and tear, our 
-                                skilled team delivers quality workmanship with attention 
-                                to detail. We use high-quality materials to ensure 
-                                durability and a perfect finish. Trust us to create a 
-                                clean, polished space that complements your home’s 
-                                design. Let’s bring your vision to life with expertly 
-                                finished drywall!
-                            </div>
-                            <div class="card-footer d-flex justify-content-center align-items-center">
-                                <a href={{url('/services')}} ><button class="btn btn-outline-gold text-capitalize">learn more</button></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="services_item_container col-sm-12 col-md-4 col-lg-4">
-                        <div class="card w-100">
-                            <div class="card-header f-size-23 text width400 text-center color-w">
-                                Backsplash
-                            </div>
-                            <div class="card-body text text-center d-flex justify-content-center align-items-center text">
-                                Elevate your kitchen or bathroom with our 
-                                stylish backsplash services. A beautifully designed 
-                                backsplash not only protects your walls but also adds a 
-                                stunning focal point to your space. We offer a variety 
-                                of materials, including tile, glass, and stone, 
-                                allowing you to choose the perfect look that complements 
-                                your design. Our expert team ensures precise installation 
-                                for a flawless finish. Transform your area with a backsplash 
-                                that reflects your style and enhances your home’s overall 
-                                aesthetic!
-                            </div>
-                            <div class="card-footer d-flex justify-content-center align-items-center">
-                                <a href={{url('/services')}} ><button class="btn btn-outline-gold text-capitalize">learn more</button></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="services_item_container col-sm-12 col-md-4 col-lg-4">
-                        <div class="card w-100">
-                            <div class="card-header f-size-23 text width400 text-center color-w">
-                                Counter tops
-                            </div>
-                            <div class="card-body text text-center d-flex justify-content-center align-items-center text">
-                                Upgrade your kitchen or bathroom with our 
-                                premium countertop services. We offer a wide 
-                                selection of materials, including granite, quartz, marble, 
-                                and laminate, to suit every style and budget. Our expert 
-                                team provides professional installation, ensuring a perfect 
-                                fit and finish for your space. Whether you’re looking 
-                                for durability, elegance, or both, we help you choose the 
-                                ideal countertop that enhances functionality and adds value 
-                                to your home. Transform your surfaces with beautiful, 
-                                high-quality countertops that elevate your living spaces!
-                            </div>
-                            <div class="card-footer d-flex justify-content-center align-items-center">
-                                <a href={{url('/services')}} ><button class="btn btn-outline-gold text-capitalize">learn more</button></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row p-20">
-                    <div class="services_item_container col-sm-12 col-md-4 col-lg-4">
-                        <div class="card w-100">
-                            <div class="card-header f-size-23 text width400 text-center color-w">
-                                Closets
-                            </div>
-                            <div class="card-body text text-center d-flex justify-content-center align-items-center text">
-                                Maximize your storage with our custom 
-                                closet solutions. We design and install closets 
-                                tailored to your needs, whether for bedrooms, 
-                                entryways, or home offices. Our expert team helps you 
-                                choose the best configurations, materials, and finishes 
-                                to create a functional and stylish space. From built-in 
-                                shelves to stylish organizers, we ensure every inch is 
-                                optimized for efficiency. Transform your cluttered areas 
-                                into beautifully organized closets that enhance your home’s 
-                                functionality and aesthetic!
-                            </div>
-                            <div class="card-footer d-flex justify-content-center align-items-center">
-                                <a href={{url('/services')}} ><button class="btn btn-outline-gold text-capitalize">learn more</button></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="services_item_container col-sm-12 col-md-4 col-lg-4">
-                        <div class="card w-100">
-                            <div class="card-header f-size-23 text width400 text-center color-w">
-                                Interior painting
-                            </div>
-                            <div class="card-body text text-center d-flex justify-content-center align-items-center text">
-                                Refresh your home with our professional 
-                                interior painting services. Our skilled team 
-                                brings expertise and attention to detail, 
-                                ensuring a flawless finish that enhances your space. 
-                                We work with a variety of colors and finishes, helping 
-                                you choose the perfect palette to match your style. 
-                                Whether it’s a single room or your entire home, we use 
-                                high-quality paints and techniques for long-lasting results. 
-                                Transform your interiors and create a vibrant atmosphere 
-                                with our expert painting services!
-                            </div>
-                            <div class="card-footer d-flex justify-content-center align-items-center">
-                                <a href={{url('/services')}} ><button class="btn btn-outline-gold text-capitalize">learn more</button></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="services_item_container col-sm-12 col-md-4 col-lg-4">
-                        <div class="card w-100">
-                            <div class="card-header f-size-23 text width400 text-center color-w">
-                                Tails
-                            </div>
-                            <div class="card-body text text-center d-flex justify-content-center align-items-center text">
-                                Enhance your space with our professional tails services. 
-                                Tails can add a unique design element to your interiors, 
-                                providing a stylish and polished finish to various 
-                                installations. Whether you’re looking for decorative tails 
-                                on cabinetry, furniture, or other custom features, our skilled 
-                                team ensures precise craftsmanship that elevates your home’s 
-                                aesthetic. From classic to modern styles, we work with you to 
-                                create beautiful, tailored solutions that reflect your personal 
-                                taste. Transform your interiors with stunning tails that make a 
-                                statement!
-                            </div>
-                            <div class="card-footer d-flex justify-content-center align-items-center">
-                                <a href={{url('/services')}} ><button class="btn btn-outline-gold text-capitalize">learn more</button></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
         </div>
         <div class="section_sixth_footer">
@@ -530,49 +300,57 @@
                     </h2>
                     <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingSix">
                       <div class="accordion-body">
-                        Yes, we are fully certified and insured, ensuring that your remodel is completed to the highest standards of quality and safety.
+                        Yes, we are fully certified and insured, ensuring that your remodel is completed to the highest standards of quality and safety. <b>Studio ABM Builders License #: 1100541</b>
                       </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="section_eighth bg-w">
         <div class="container_eight">
-            <div class="bg_w_gradient ">
+             <div class="bg_w_gradient ">
                 <img src="contact_section_bg.jpg" class="w-100 h-100 bg_contact_us_image">
                 <div class="bg_gradient_overlay"></div>
-            </div>
+            </div> 
             <h1 class="text-center z-1 position-relative text width500">Contact Us</h1>
             <div class="container z-1 position-relative">
                 <div class="row h-100 align-items-center">
-                    <div class="col-6 text-center">
+                    <div class="col-lg-6 col-md-6 col-sm-12 text-center">
                         <h2 class="Contact_Header text width500 text-capitalize">Get a Quote</h2>
                         <small>
                             Unlock your project’s potential—get your personalized quote for free!
                         </small>
                         <div class="">
+                            
                             <div class="contact_item d-flex flex-column">
                                 <i class="contact_info p-20 fa fa-phone"></i>
-                                <a type="tel">+1 (818)930-4127</a>
+                                <a type="tel">{{ $FrontPhone[0]->value }}</a>
                             </div>
                             <div class="contact_item d-flex flex-column">
                                 <i class="contact_info p-20 fa fa-at"></i>
-                                <a type="email">info@studioambbuilders.com</a>
+                                <a type="email">{{ $FrontEmail[0]->value }}</a>
                             </div>
                             <div class="contact_item d-flex flex-column">
-                                <i class="contact_info p-20 fa fa-map-marker"></i>
-                                <p>7040 Grden Grove Ave reseda CA 91335</p>
+                                <i class="contact_info p-20 fa fa-clock"></i>
+                                <a type="email">{!! nl2br($workingHoursFront[0]->value) !!}</a>
                             </div>
-                            <h2 class="Contact_Header text width500">Find Us</h2>
-                                <span class="bg-color_gold carusel_control_button carusel_control_left mr-10"><i class="fa-brands fa-facebook d-flex justify-content-center align-items-center"></i></span>
+                            
+                            <div class="contact_item d-flex flex-column">
+                                <i class="contact_info p-20 fa fa-map-marker"></i>
+                                <p>{!! nl2br($Address[0]->value) !!}</p>
+                            </div>
 
-                                <span class="bg-color_gold carusel_control_button carusel_control_left mr-10"><i class="fa-brands fa-instagram d-flex justify-content-center align-items-center"></i></span>                
+                            <h2 class="Contact_Header text width500">Studio ABM Builders License #: 1100541</h2>
+
+                            <h2 class="Contact_Header text width500">Find Us</h2>
+                                <a href={{$FacebookLink[0]->value}} target="_blank"><span class="bg-color_gold carusel_control_button carusel_control_left mr-10"><i class="fa-brands fa-facebook d-flex justify-content-center align-items-center"></i></span></a>
+
+                                <a href={{$InstagramLink[0]->value}} target="_blank"><span class="bg-color_gold carusel_control_button carusel_control_left mr-10"><i class="fa-brands fa-instagram d-flex justify-content-center align-items-center"></i></span></a>                
                         </div>
 
                     </div>
-                    <div class="col-6">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
                         <form action="">
                             <div class="contact_form br-10px p-20 bg-w d-flex flex-column">
                                 <div class="input_item">
@@ -588,11 +366,13 @@
                                     <textarea required name="message" placeholder="Message"  id="" cols="30" rows="10" class="Message br-5pxB-1px"></textarea>
                                 </div>
                                 <button type="button" class="text contacts_button btn btn-outline-primary">Submit</button>
-                                <div class="text-danger d-none">
-                                    Your submission was filed
-                                </div>
-                                <div class="text-success ">
-                                    Your submission was successfuly sent. We will contact you soon
+                                <div class="respons mt-2">
+                                    <div class="text-danger form_failed_contact position-absolute">
+                                        Your submission was filed
+                                    </div>
+                                    <div class="text-success form_submited_correct_contact">
+                                        Your submission was successfuly sent. We will contact you soon
+                                    </div>
                                 </div>
                             </div> 
                         </form>
